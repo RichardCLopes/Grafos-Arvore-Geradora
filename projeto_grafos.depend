@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1654206458 source:d:\grafos\projeto_grafos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+
