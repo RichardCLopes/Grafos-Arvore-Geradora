@@ -28,7 +28,7 @@ int main()
 {
     //Leitra do arquivo
     FILE *arquivo;
-    arquivo = fopen("dados2.txt", "r");
+    arquivo = fopen("dados5.txt", "r");
     char c;
     int cidades=0;
 
