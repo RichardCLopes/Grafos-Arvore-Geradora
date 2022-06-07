@@ -1,4 +1,4 @@
-//Richard do Carmo Lopes,  RA: 1004683
+//Richard do Carmo Lopes,  RA: 14004683
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,22 +6,22 @@
 #include <limits.h>
 
 #define V 9999
-int pai[V];
+int lig[V];
 
 //Encontra o conjunto do vertice i
-int find(int i)
+int verifica(int i)
 {
-    while (pai[i] != i)
-        i = pai[i];
+    while (lig[i] != i)
+        i = lig[i];
     return i;
 }
 
 // Uni i e j, Return false se já estiverem no mesmo conjunto
-void union1(int i, int j)
+void uni(int i, int j)
 {
-    int a = find(i);
-    int b = find(j);
-    pai[a] = b;
+    int a = verifica(i);
+    int b = verifica(j);
+    lig[a] = b;
 }
 
 int main()
@@ -32,7 +32,7 @@ int main()
     char c;
     int cidades=0;
 
-    //descobrindo quantas cidades sao
+    //Descobrindo quantas cidades sao
     while(!feof(arquivo)){
         c=fgetc(arquivo);
         if(c=='\n'){
@@ -41,7 +41,7 @@ int main()
     }
     cidades++;
 
-    //Criando matriz de adjacencia
+    //Passando dados do arquivo para matriz de adjacencia
     int mat[cidades][cidades];
     rewind(arquivo);
     for(int i=0;i<cidades;i++){
@@ -66,7 +66,7 @@ int main()
 
     //Inicializa
     for (int i = 0; i < cidades; i++)
-        pai[i] = i;
+        lig[i] = i;
 
     //Inclusão de arestas de peso minimo
     int contcaminho = 0;
@@ -74,7 +74,7 @@ int main()
         int min = INT_MAX, a = -1, b = -1;
         for (int i = 0; i < cidades; i++) {
             for (int j = 0; j < cidades; j++) {
-                if (find(i) != find(j) && mat[i][j] < min) {
+                if (verifica(i) != verifica(j) && mat[i][j] < min) {
                     min = mat[i][j];
                     a = i;
                     b = j;
@@ -82,7 +82,7 @@ int main()
             }
         }
 
-        union1(a, b);
+        uni(a, b);
         printf("Caminho %d => (V%d, V%d) Custo:%d \n", contcaminho++ +1, a+1, b+1, min);
         customin *= min;
     }
