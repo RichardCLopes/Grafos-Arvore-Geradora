@@ -1,5 +1,3 @@
-//Richard do Carmo Lopes,  RA: 14004683
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,7 +14,7 @@ int verifica(int i)
     return i;
 }
 
-// Uni i e j, Return false se já estiverem no mesmo conjunto
+// Uni i e j, Return false se ja estiverem no mesmo conjunto
 void uni(int i, int j)
 {
     int a = verifica(i);
@@ -28,7 +26,7 @@ int main()
 {
     //Leitra do arquivo
     FILE *arquivo;
-    arquivo = fopen("dados5.txt", "r");
+    arquivo = fopen("matrizes_adj/dados1.txt", "r");
     char c;
     int cidades=0;
 
@@ -50,7 +48,7 @@ int main()
         }
     }
 
-    //Colocando o maior valor onde não há ligação
+    //Colocando o maior valor onde nao ha ligacao
     for(int i=0;i<cidades;i++){
         for(int j=0;j<cidades;j++){
                 if(mat[i][j]==0){
@@ -68,7 +66,7 @@ int main()
     for (int i = 0; i < cidades; i++)
         lig[i] = i;
 
-    //Inclusão de arestas de peso minimo
+    //Inclusao de arestas de peso minimo
     int contcaminho = 0;
     while (contcaminho < cidades - 1) {
         int min = INT_MAX, a = -1, b = -1;
